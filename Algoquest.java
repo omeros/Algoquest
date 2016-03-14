@@ -74,7 +74,7 @@ public class Algoquest
     
     }
     
-   /******************checking if a given cordinates in a shap Bound**************/
+   /******************checking if a given cordinates is in a shap Bound**************/
     public boolean coordinatesInShap(double l,double r,double t,double b, Bound [] arrayOfShaps)
     /*****************************************************************************/
     { 
