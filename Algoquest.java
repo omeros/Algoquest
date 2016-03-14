@@ -9,23 +9,12 @@ public class Algoquest
 {
     
     
-    /**
-     * Constructor for objects of class Algoquest
-     */
     
-    
-   
+     /* Constructor for objects of class Algoquest */
+     
     public Algoquest()
     {
     }
-    
-    /**
-     * the function who finds the max  Bound in The Main Bound
-     * 
-     *
-    
-  
-    
     
     /** check to see if a givven area is clear of shaps **********************************/
     public boolean ereaIsClear(double l,double r,double t,double b, Bound [] arrayOfShaps)
