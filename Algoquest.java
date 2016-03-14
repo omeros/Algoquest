@@ -16,7 +16,7 @@ public class Algoquest
     {
     }
     
-    /** check to see if a givven area is clear of shaps **********************************/
+    /** checking if a givven area is clear of shaps **********************************/
     public boolean ereaIsClear(double l,double r,double t,double b, Bound [] arrayOfShaps)
     /*************************************************************************************/
     {
