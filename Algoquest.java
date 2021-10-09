@@ -21,9 +21,7 @@ public class Algoquest {
         counEreaIsClear = 0;
     }
 
-    /********
-     * checking if a given area is clear of shapes
-     **********************************/
+    /********* checking if a given area is clear of shapes***********************************/
     public boolean ereaIsClear(double l, double r, double t, double b, Bound[] arrayOfShaps)
     /***************************************************************************************/
     {
@@ -39,7 +37,7 @@ public class Algoquest {
             double l2 = arrayOfShaps[i].getLeft();
 
             // check if the size of the rectangle is smaller than pixel 1
-            if (((t - b) <= 1) && ((r - l) <= 1)) {
+            if (((t - b) <= 1) || ((r - l) <= 1)) {
                 return true;
             }
 
@@ -80,8 +78,9 @@ public class Algoquest {
     {
         System.out.println(" ereaIsBlock function : " + counEreaIsBlock);
         counEreaIsBlock++;
-
-        if (((t - b) <= 1) && ((r - l) <= 1)) {
+        
+        // can be "&&" as well
+        if (((t - b) <= 1) || ((r - l) <= 1)) {  
             return true;
         }
 
@@ -104,9 +103,7 @@ public class Algoquest {
 
     }
 
-    /******************
-     * checking if a given coordinates is in a shape Bound
-     **************/
+    /******************* checking if a given coordinates is in a shape Bound **************/
     public boolean coordinatesInShap(double l, double r, double t, double b, Bound[] arrayOfShaps)
     /*****************************************************************************/
     {
@@ -128,11 +125,9 @@ public class Algoquest {
 
     }
 
-    /************
-     * The Main algorithm
-     ************************************************/
+    /************* The Main algorithm ****************************************************/
     public BoundList findMax(double l, double r, double t, double b, Bound[] arrayOfShaps)
-    /*******************************************************************************/
+    /*************************************************************************************/
     {
         System.out.println(" Main function : " + count);
         count++;

@@ -25,24 +25,22 @@ public class BoundList {
   }
 
   /***************** combine two lists to one list ***********************/
-  public BoundList combine(BoundList b)
+  public BoundList combine(BoundList other)
   /**********************************************************************/
   {
-    if (b != null) {
-      BoundNode p1 = b.getHead();
-      while (p1.getNext() != null) {
-        this.addToList(p1); // adding the first Node in the List b to this list
-        p1 = p1.getNext();
+    if (other != null) {
+      BoundNode otherNode = other.getHead();
+      while (otherNode.getNext() != null) {
+        this.addToList(otherNode); // adding the first Node in the other List  to this list
+        otherNode = otherNode.getNext();
       }
-      this.addToList(p1);
+      this.addToList(otherNode);
       return this;
     }
     return null;
   }
 
-  /*****************
-   * add each node to another in the same list
-   ***********************/
+  /****************** add each node to another in the same list ***********************/
   public void refresh()
   /*******************************************************************************/
   {
@@ -65,49 +63,41 @@ public class BoundList {
 
   }
 
-  /************
-   * adding p1 Node to the list
-   ********************************************/
-  public void addToList(BoundNode p1)
+  /************* adding other Node to this list ********************************************/
+  public void addToList(BoundNode other)
   /**************************************************************************************/
   {
-    BoundNode p2 = this.getHead();
-    while (p2.getNext() != null) {
+    BoundNode myNode = this.getHead();
+    while (myNode.getNext() != null) {
 
-      p2.addNode(p1);
-      p2 = p2.getNext();
+    	myNode.addNode(other);
+    	myNode = myNode.getNext();
 
     }
-    p2.addNode(p1);
-    if (p1.getAd() == 0) {
-      BoundNode a = new BoundNode(p1);
-      p2.setNext(a);
-      // p1.setAd(1);
+    myNode.addNode(other);
+    if (other.getAd() == 0) {
+      BoundNode a = new BoundNode(other);
+      myNode.setNext(a);
+      other.setAd(1);
     }
 
   }
 
-  /************
-   * connect this list( last bound) with other list( head bound)
-   ********************************************/
-  public BoundList unit(BoundList other)
+  /************* connect this list( last bound) with other list( head bound)********************************************/
+  public BoundList unit(BoundList otherList)
   /*******************************************************************************************************************/
   {
-    BoundNode p1 = this.getHead();
-    while (p1.getNext() != null) {
-      p1 = p1.getNext();
+    BoundNode myNode = this.getHead();
+    while (myNode.getNext() != null) {
+    	myNode = myNode.getNext();
     }
-    BoundNode p2 = other.getHead();
+    BoundNode otherNode = otherList.getHead();
     // p2.setNext(p1); // part of the answers, - short run time
-    p1.setNext(p2); // all the answers, - long run time
-
+    myNode.setNext(otherNode); // all the answers, - long run time
     return this;
-
   }
 
-  /**************
-   * set to zero all the add symbols in the BoundNodes
-   **********************************************************************/
+  /*************** set to zero all the add symbols in the BoundNodes **********************************************************************/
   public void setAddToZero()
   /************************************************************************************************************************************/
   {
