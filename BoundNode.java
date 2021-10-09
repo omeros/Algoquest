@@ -70,7 +70,7 @@ public class BoundNode
                 /** case 2 */
                              
       //1.1   // other bound is in the bottom of _bb and the right and left  of otherBound is bigger or equal than the right and left  of _bb 
-         if( (otherLeft<=thisLeft)&&(thisRight<=otherRight)&&(thisBottom==otherTop)&&(otherTop<thisTop))
+         if( (otherLeft<=thisLeft)&&(thisRight<=otherRight)&&(thisBottom<=otherTop)&&(thisBottom<thisBottom))
         {
             _bb.setBottom(otherBottom);
             _size=_bb.getSize();
@@ -78,7 +78,7 @@ public class BoundNode
         }
          
          //4.3 // p1 is above to _bb and his right and left values is bigger or equal to p2's right&left values.
-         if( ( (otherLeft<=thisLeft)&&(thisRight<=otherRight)&&(thisTop==otherBottom)&&(thisTop<otherTop)))
+         if( ( (otherLeft<=thisLeft)&&(thisRight<=otherRight)&&(thisTop>=otherBottom)&&(thisTop<otherTop)))
          {
         	 _bb.setTop(otherTop);
         	 _size=_bb.getSize();
@@ -86,7 +86,7 @@ public class BoundNode
          }
 
           //2.3// p1 from the right to _bb and the bottom of p1 is lower than the bottom of _bb && the top of p1 is higher than the top of _bb
-        if( (otherTop>=thisTop) && (otherBottom<=thisBottom) && (otherLeft==thisRight)&&(thisLeft<otherLeft) ) 
+        if( (otherTop>=thisTop) && (otherBottom<=thisBottom) && (otherLeft<=thisRight)&&(thisLeft<otherLeft) ) 
         {
             _bb.setRight(otherRight);
             _size=_bb.getSize();
@@ -94,7 +94,7 @@ public class BoundNode
         }
             
            //3.3// other Bound (p1) is at  the left of  this Bound (_bb) and the  bottom of p1 is lower than the bottom of _bb &&top of p1 is higher than the top of _bb
-        if( (otherTop>=thisTop) && (otherBottom<=thisBottom) && (otherRight==thisLeft)&&(otherRight<thisRight)  )
+        if( (otherTop>=thisTop) && (otherBottom<=thisBottom) && (otherRight>=thisLeft)&&(otherRight<thisRight)  )
         {
             _bb.setLeft(otherLeft);
             _size=_bb.getSize();
