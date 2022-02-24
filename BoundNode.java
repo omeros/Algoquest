@@ -70,7 +70,7 @@ public class BoundNode
                 /** case 2 */
                              
       //1.1   // other bound is in the bottom of _bb and the right and left  of otherBound is bigger or equal than the right and left  of _bb 
-         if( (otherLeft<=thisLeft)&&(thisRight<=otherRight)&&(thisBottom<=otherTop)&&(thisBottom<thisBottom))
+         if( (otherLeft<=thisLeft)&&(thisRight<=otherRight)&&(otherBottom<thisBottom)&&(thisBottom==otherTop))   // (thisBottom<=otherTop)
         {
             _bb.setBottom(otherBottom);
             _size=_bb.getSize();
@@ -78,7 +78,7 @@ public class BoundNode
         }
          
          //4.3 // p1 is above to _bb and his right and left values is bigger or equal to p2's right&left values.
-         if( ( (otherLeft<=thisLeft)&&(thisRight<=otherRight)&&(thisTop>=otherBottom)&&(thisTop<otherTop)))
+         if( ( (otherLeft<=thisLeft)&&(thisRight<=otherRight)&&(otherBottom==thisTop)&&(thisTop<otherTop)))   // (otherBottom<=thisTop)
          {
         	 _bb.setTop(otherTop);
         	 _size=_bb.getSize();
@@ -86,7 +86,7 @@ public class BoundNode
          }
 
           //2.3// p1 from the right to _bb and the bottom of p1 is lower than the bottom of _bb && the top of p1 is higher than the top of _bb
-        if( (otherTop>=thisTop) && (otherBottom<=thisBottom) && (otherLeft<=thisRight)&&(thisLeft<otherLeft) ) 
+        if( (otherTop>=thisTop) && (otherBottom<=thisBottom) &&  (thisLeft<otherLeft) && (otherLeft==thisRight))  //(otherLeft<=thisRight)
         {
             _bb.setRight(otherRight);
             _size=_bb.getSize();
@@ -94,7 +94,7 @@ public class BoundNode
         }
             
            //3.3// other Bound (p1) is at  the left of  this Bound (_bb) and the  bottom of p1 is lower than the bottom of _bb &&top of p1 is higher than the top of _bb
-        if( (otherTop>=thisTop) && (otherBottom<=thisBottom) && (otherRight>=thisLeft)&&(otherRight<thisRight)  )
+        if( (otherTop>=thisTop) && (otherBottom<=thisBottom) && (thisLeft==otherRight)&&(otherRight<thisRight)  )  // (thisLeft<=otherRight)
         {
             _bb.setLeft(otherLeft);
             _size=_bb.getSize();
@@ -105,8 +105,7 @@ public class BoundNode
         /**** case 4- this Bound (_bb) is inside other bound (p1) *********/
         
         /**4.1**** top and bottom are  different *****/
-          if( (otherTop>=thisTop) && (otherBottom<=thisBottom) && (otherLeft<=thisLeft)&&(otherRight>=thisRight)  )
-        {    
+          if( (otherTop>=thisTop) && (otherBottom<=thisBottom) && (otherLeft<=thisLeft)&&(thisRight<=otherRight)  ) {    
             _bb.setTop(otherTop);
             _bb.setBottom(otherBottom);
             _bb.setLeft(otherLeft);
@@ -116,6 +115,10 @@ public class BoundNode
         }
       
    }
+    public String toString() {
+  	  String cords = "left : " +  "rigth" + "up" + "down";
+  	  return cords;
+    }
 
 }
 

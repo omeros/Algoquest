@@ -1,5 +1,7 @@
 package Algoquest;
 
+import javax.swing.Spring;
+
 public class BoundList {
   BoundNode _head;
 
@@ -78,7 +80,7 @@ public class BoundList {
     if (other.getAd() == 0) {
       BoundNode a = new BoundNode(other);
       myNode.setNext(a);
-      other.setAd(1);
+     // other.setAd(1);
     }
 
   }
@@ -92,7 +94,7 @@ public class BoundList {
     	myNode = myNode.getNext();
     }
     BoundNode otherNode = otherList.getHead();
-    // p2.setNext(p1); // part of the answers, - short run time
+    // otherNode.setNext(myNode); // part of the answers, - short run time
     myNode.setNext(otherNode); // all the answers, - long run time
     return this;
   }
@@ -109,4 +111,9 @@ public class BoundList {
 
   }
   /**************************************************************************************/
+  
+  public String toString() {
+	  
+	  return "test";
+  }
 }

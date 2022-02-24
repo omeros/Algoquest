@@ -126,9 +126,8 @@ public class Algoquest {
     }
 
     /************* The Main algorithm ****************************************************/
-    public BoundList findMax(double l, double r, double t, double b, Bound[] arrayOfShaps)
+    public BoundList findMax(double l, double r, double t, double b, Bound[] arrayOfShaps){
     /*************************************************************************************/
-    {
         System.out.println(" Main function : " + count);
         count++;
 
@@ -161,12 +160,9 @@ public class Algoquest {
 
     }
 
-    /*****
-     * unit the bounds in 4 difference lists of Bounds to one list of bound
-     *************/
-    public BoundList unitTheGroup(BoundList b1, BoundList b2, BoundList b3, BoundList b4)
+    /****** unit the bounds in 4 difference lists of Bounds to one list of bound *************/
+    public BoundList unitTheGroup(BoundList b1, BoundList b2, BoundList b3, BoundList b4){
     /*************************************************************************************/
-    {
         BoundList f1;
         BoundList f2;
         BoundList f3;
@@ -174,7 +170,7 @@ public class Algoquest {
 
         if ((b1 != null) && (b2 != null) && (b3 != null) && (b4 != null)) {
             f1 = b1.combine(b2); // combine b1 and b2 to new list- f1
-            f2 = b2.combine(b1);
+            f2 = b2.combine(f1);
             // f1.refresh();
             // f2.refresh();
 
@@ -193,7 +189,6 @@ public class Algoquest {
             // f2.refresh();
 
             f1 = f1.unit(f2);
-
             return f1;
         }
         // 1 list are null
@@ -216,7 +211,7 @@ public class Algoquest {
 
         if ((b1 != null) && (b2 != null) && (b3 == null) && (b4 != null)) {
             f1 = b1.combine(b2); // combine b1 and b2 to new list- f1
-            f2 = b2.combine(b1);
+            f2 = b2.combine(f1);
 
             f2 = f2.unit(f1);
 
@@ -224,13 +219,12 @@ public class Algoquest {
             f3 = b4.combine(f2);
 
             f4 = f3.unit(f2);
-
             return f4;
         }
 
         if ((b1 != null) && (b2 == null) && (b3 != null) && (b4 != null)) {
             f1 = b1.combine(b3); // combine b1 and b3 to new list- f1
-            f2 = b3.combine(b1);
+            f2 = b3.combine(f1);
 
             f2 = f1.unit(f2);
 
@@ -249,7 +243,7 @@ public class Algoquest {
             f1 = f1.unit(f2);
 
             f3 = f1.combine(b4); // combine f1 and b4 to new list- f1
-            f4 = b4.combine(f3);
+            f4 = b4.combine(f1);
 
             f4 = f3.unit(f4);
             return f4;
@@ -326,8 +320,10 @@ public class Algoquest {
                 p1 = p1.getNext();
             }
             Bound m = maximal.getBound();
+           // System.out.println(" all Bounds in findMax Function : " + List.toString() );
             return m;
         }
+      //  System.out.println(" all Bounds in findMax Function : " + List.toString() );
         return null;
     }
 
